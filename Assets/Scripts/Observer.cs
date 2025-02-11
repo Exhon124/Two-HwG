@@ -4,42 +4,57 @@ using UnityEngine;
 
 public class Observer : MonoBehaviour
 {
-    public Transform player;
-    public GameEnding gameEnding;
+    private Transform player;
+    public GameObject laser;
+    private Light objectLight;
 
     bool m_IsPlayerInRange;
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.transform == player)
-        {
-            m_IsPlayerInRange = true;
-        }
+        Debug.Log("Player Entered Detection Zone");
+        m_IsPlayerInRange = true;
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.transform == player)
-        {
             m_IsPlayerInRange = false;
-        }
+    }
+
+    private void Start()
+    {
+        player = GameObject.FindWithTag("Player").transform;
+        objectLight = GetComponent<Light>();
     }
 
     void Update()
     {
+
         if (m_IsPlayerInRange)
         {
-            Vector3 direction = player.position - transform.position + Vector3.up;
+            Vector3 direction = player.position - transform.position;
             Ray ray = new Ray(transform.position, direction);
             RaycastHit raycastHit;
 
+            Debug.DrawRay(transform.position, direction * 100f, Color.red, 1f);
+
             if (Physics.Raycast(ray, out raycastHit))
             {
+                Debug.Log("cast ray hit something");
                 if (raycastHit.collider.transform == player)
                 {
-                    gameEnding.CaughtPlayer();
+                    Debug.Log("firing");
+                    shootLaser();
+                    objectLight.color = Color.red;
                 }
             }
         }
+    }
+
+    void shootLaser()
+    {
+        Vector3 targetPosition = player.position;
+        // Spawn the projectile at the enemy's position
+        GameObject projectile = Instantiate(laser, transform.position, Quaternion.identity);
     }
 }
