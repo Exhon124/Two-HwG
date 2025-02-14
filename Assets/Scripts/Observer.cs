@@ -4,57 +4,52 @@ using UnityEngine;
 
 public class Observer : MonoBehaviour
 {
+    public RobotBehavior robot; // Reference to parent RobotBehavior
     private Transform player;
-    public GameObject laser;
-    private Light objectLight;
-
-    bool m_IsPlayerInRange;
-
-    void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Player Entered Detection Zone");
-        m_IsPlayerInRange = true;
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-            m_IsPlayerInRange = false;
-    }
+    private bool m_IsPlayerInRange;
 
     private void Start()
     {
-        player = GameObject.FindWithTag("Player").transform;
-        objectLight = GetComponent<Light>();
+        player = GameObject.FindWithTag("Player")?.transform;
     }
 
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-
-        if (m_IsPlayerInRange)
+        if (other.transform == player)
         {
-            Vector3 direction = player.position - transform.position;
-            Ray ray = new Ray(transform.position, direction);
-            RaycastHit raycastHit;
-
-            Debug.DrawRay(transform.position, direction * 100f, Color.red, 1f);
-
-            if (Physics.Raycast(ray, out raycastHit))
-            {
-                Debug.Log("cast ray hit something");
-                if (raycastHit.collider.transform == player)
-                {
-                    Debug.Log("firing");
-                    shootLaser();
-                    objectLight.color = Color.red;
-                }
-            }
+            m_IsPlayerInRange = true;
+            robot.SetState(RobotBehavior.EnemyState.Search);
         }
     }
 
-    void shootLaser()
+    private void OnTriggerExit(Collider other)
     {
-        Vector3 targetPosition = player.position;
-        // Spawn the projectile at the enemy's position
-        GameObject projectile = Instantiate(laser, transform.position, Quaternion.identity);
+        m_IsPlayerInRange = false;
+        robot.SetState(RobotBehavior.EnemyState.Passive);
+    }
+
+    private void Update()
+    {
+        if (m_IsPlayerInRange)
+        {
+            int layerMask = ~(1 << LayerMask.NameToLayer("Laser"));
+            Vector3 direction = player.position - transform.position;
+            Ray ray = new Ray(transform.position, direction);
+            RaycastHit hit;
+
+            Debug.DrawRay(transform.position, direction * 100f, Color.red, 1f);
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+            {
+                if (hit.collider.transform == player)
+                {
+                    robot.SetState(RobotBehavior.EnemyState.Firing);
+                }
+                else
+                {
+                    robot.SetState(RobotBehavior.EnemyState.Search);
+                }
+            }
+        }
     }
 }

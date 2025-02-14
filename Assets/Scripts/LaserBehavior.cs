@@ -5,7 +5,7 @@ using UnityEngine;
 public class LaserBehavior : MonoBehaviour
 {
     private Vector3 targetPosition;
-    private float speed = 10f;
+    private float speed = 17f;
     public GameObject gameobject;
     private Vector3 direction;
     private Transform player;
@@ -15,12 +15,13 @@ public class LaserBehavior : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player").transform;
         direction = (player.position - transform.position).normalized;
+        transform.rotation = Quaternion.LookRotation(direction);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Player Position: " + player.position);
+
         transform.position += direction * speed * Time.deltaTime;
 
     }
@@ -28,9 +29,9 @@ public class LaserBehavior : MonoBehaviour
     {
         if (other.CompareTag("EnemyRobot"))
         {
-            Debug.Log("Laser hit enemy, but does nothing.");
+
         }else {
-            Debug.Log("Laser triggered by: " + other.gameObject.name);
+
             Destroy(gameObject);
         }
         
