@@ -16,6 +16,7 @@ public class LaserBehavior : MonoBehaviour
         player = GameObject.FindWithTag("Player").transform;
         direction = (player.position - transform.position).normalized;
         transform.rotation = Quaternion.LookRotation(direction);
+        Debug.Log("Made laser");
     }
 
     // Update is called once per frame
@@ -31,7 +32,7 @@ public class LaserBehavior : MonoBehaviour
         {
 
         }else {
-
+            Debug.Log("destroy laser");
             Destroy(gameObject);
         }
         

@@ -134,6 +134,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyRobot
       objectReference: {fileID: 0}
+    - target: {fileID: 179688786444752423, guid: 8d0a929b3c043394a8145f481db36110, type: 3}
+      propertyPath: m_TagString
+      value: EnemyRobot
+      objectReference: {fileID: 0}
+    - target: {fileID: 674155680426490101, guid: 8d0a929b3c043394a8145f481db36110, type: 3}
+      propertyPath: robot
+      value: 
+      objectReference: {fileID: 644055727}
+    - target: {fileID: 1144112515674318670, guid: 8d0a929b3c043394a8145f481db36110, type: 3}
+      propertyPath: m_TagString
+      value: EnemyRobot
+      objectReference: {fileID: 0}
     - target: {fileID: 6166840274192595852, guid: 8d0a929b3c043394a8145f481db36110, type: 3}
       propertyPath: waypoints.Array.size
       value: 4
@@ -206,10 +218,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6166840274192595852, guid: 8d0a929b3c043394a8145f481db36110, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 179688786444752423, guid: 8d0a929b3c043394a8145f481db36110, type: 3}
+      insertIndex: 6
+      addedObject: {fileID: 644055729}
   m_SourcePrefab: {fileID: 100100000, guid: 8d0a929b3c043394a8145f481db36110, type: 3}
 --- !u!1 &251948727
 GameObject:
@@ -421,6 +437,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 7.662, z: 0}
+--- !u!1 &644055727 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 179688786444752423, guid: 8d0a929b3c043394a8145f481db36110, type: 3}
+  m_PrefabInstance: {fileID: 7298832}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &644055729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644055727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0c39c314d90e8e4cb799a3243723e28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laser: {fileID: 7983505274531486466, guid: 863f76768fdae9a4e92368200a61be85, type: 3}
+  objectLight: {fileID: 0}
+  waypoints:
+  - {fileID: 2098442521}
+  - {fileID: 1947170909}
+  playerDetected: 0
+  playerSeen: 0
+  lastKnownLoc: {x: 0, y: 0, z: 0}
+  laserChargeTime: 3
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

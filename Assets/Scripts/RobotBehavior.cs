@@ -25,7 +25,6 @@ public class RobotBehavior : MonoBehaviour
         player = GameObject.FindWithTag("Player")?.transform;
         objectLight = GetComponent<Light>();
         agent.SetDestination(waypoints[0].position);
-        
     }
 
     private void Update()
