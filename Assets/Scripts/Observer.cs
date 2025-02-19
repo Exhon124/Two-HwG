@@ -4,51 +4,73 @@ using UnityEngine;
 
 public class Observer : MonoBehaviour
 {
-    public RobotBehavior robot; // Reference to parent RobotBehavior
+    public GameObject robot;
+    private RobotBehavior2 robotScript; // Reference to parent RobotBehavior
     private Transform player;
-    private bool m_IsPlayerInRange;
+    private float detectDelay = 0.4f;
+    private float nextDetect = 0.4f;
+    private bool check = false;
 
     private void Start()
     {
         player = GameObject.FindWithTag("Player")?.transform;
+        robotScript = robot.GetComponent<RobotBehavior2>();
+        if (robotScript != null)
+        {
+            Debug.Log("got it");
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform == player)
         {
-            m_IsPlayerInRange = true;
-            robot.SetState(RobotBehavior.EnemyState.Search);
+            nextDetect = Time.time + detectDelay;
+            robotScript.lastKnownLoc = player.position;
         }
+    }
+
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.transform == player)
+        {
+            if (Time.time >= nextDetect)
+            {
+                robotScript.playerDetected = true;
+            }
+            check = true;
+        }
+
     }
 
     private void OnTriggerExit(Collider other)
     {
-        m_IsPlayerInRange = false;
-        robot.SetState(RobotBehavior.EnemyState.Passive);
+        check = false;
+        StartCoroutine(waitForCheck());
+        //set a variable to false
+        //wait a bit
+        //if variable is still false then turn heat down one
+        
     }
 
     private void Update()
     {
-        if (m_IsPlayerInRange)
+        
+    }
+
+    IEnumerator waitForCheck()
+    {
+        yield return new WaitForSeconds(5);
+        if (check == false)
         {
-            int layerMask = ~(1 << LayerMask.NameToLayer("Laser"));
-            Vector3 direction = player.position - transform.position;
-            Ray ray = new Ray(transform.position, direction);
-            RaycastHit hit;
-
-            Debug.DrawRay(transform.position, direction * 100f, Color.red, 1f);
-
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+            if (robotScript.playerSeen == true)
             {
-                if (hit.collider.transform == player)
-                {
-                    robot.SetState(RobotBehavior.EnemyState.Firing);
-                }
-                else
-                {
-                    robot.SetState(RobotBehavior.EnemyState.Search);
-                }
+                robotScript.playerSeen = false;
+            } 
+            else if (robotScript.playerDetected == true)
+            {
+                robotScript.playerDetected = false;
             }
         }
     }
