@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static RobotBehavior;
 using UnityEngine.AI;
 
 public class RobotBehavior2 : MonoBehaviour
@@ -56,7 +55,6 @@ public class RobotBehavior2 : MonoBehaviour
                 {
                     if (hit.collider.transform == player)
                     {
-                        Debug.Log("waiting to find");
                         StartCoroutine(WaitFindPlayer());
                     }
                 }
@@ -80,7 +78,6 @@ public class RobotBehavior2 : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         playerSeen = true;
-        Debug.Log("wait and find player");
         int layerMask = ~(1 << LayerMask.NameToLayer("Laser"));
         Vector3 direction = player.position - transform.position;
         Ray ray = new Ray(transform.position, direction);
@@ -109,7 +106,6 @@ public class RobotBehavior2 : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null; 
         }
-        Debug.Log("shooting");
         Instantiate(laser, transform.position, Quaternion.identity);
         chargingLaser = false;
     }

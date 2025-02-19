@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject player; 
+    public bool keyCard = false;
+    public bool macGuffin = false;
+
     // Start is called before the first frame update
     void Start()
     {
