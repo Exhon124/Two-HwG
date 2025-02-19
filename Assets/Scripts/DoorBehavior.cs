@@ -9,6 +9,7 @@ public class DoorBehavior : MonoBehaviour
     public GameObject gameManager;
     private GameManager gameManagerScript;
     private Vector3 targetPosition;
+    public GameObject thisDoor;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +21,5 @@ public class DoorBehavior : MonoBehaviour
     void Update()
     {
 
-    }
-    public void OpenSesame()
-    {
-        Destroy(gameObject);
     }
 }

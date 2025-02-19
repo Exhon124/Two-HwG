@@ -10,7 +10,6 @@ public class DoorObserver : MonoBehaviour
     public GameObject gameManager;
     private GameManager gameManagerScript;
     public GameObject door;
-    private DoorBehavior doorBehaviorScript;
 
 
     // Start is called before the first frame update
@@ -21,19 +20,21 @@ public class DoorObserver : MonoBehaviour
         if (uiScript != null)
             Debug.Log("found ui");
         gameManagerScript = gameManager.GetComponent<GameManager>();
-        doorBehaviorScript = door.GetComponent<DoorBehavior>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        float distanceToPlayer = Vector3.Distance(player.position, door.transform.position);
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (uiScript.visible)
+            if (distanceToPlayer <= 4f)
             {
                 if (gameManagerScript.keyCard == true)
                 {
-                    doorBehaviorScript.OpenSesame();
+                    uiScript.visible = false;
+                    Destroy(door);
+                    Destroy(gameObject);
                 }
             }
         }
@@ -41,7 +42,8 @@ public class DoorObserver : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.transform == player)
-            uiScript.visible = true;
+            if (gameManagerScript.keyCard)
+                uiScript.visible = true;
     }
     void OnTriggerExit(Collider other)
     {

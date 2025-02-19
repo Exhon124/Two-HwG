@@ -205,12 +205,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 179688786444752423}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6d2ad527c7308b4dbabd64f83ea2a75, type: 3}
+  m_Script: {fileID: 11500000, guid: c0c39c314d90e8e4cb799a3243723e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laser: {fileID: 7983505274531486466, guid: 863f76768fdae9a4e92368200a61be85, type: 3}
+  laser: {fileID: 0}
   objectLight: {fileID: 0}
   waypoints: []
+  playerDetected: 0
+  playerSeen: 0
+  lastKnownLoc: {x: 0, y: 0, z: 0}
+  laserChargeTime: 3
 --- !u!54 &2862013422477101290
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -293,7 +297,7 @@ PrefabInstance:
     - target: {fileID: 4492034901533994652, guid: 9ac43bba3ac227e44b43c203a6948e11, type: 3}
       propertyPath: robot
       value: 
-      objectReference: {fileID: 6166840274192595852}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
