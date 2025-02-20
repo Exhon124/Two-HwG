@@ -5,7 +5,7 @@ using UnityEngine;
 public class LaserBehavior : MonoBehaviour
 {
     private Vector3 targetPosition;
-    private float speed = 17f;
+    private float speed = 26f;
     public GameObject gameobject;
     private Vector3 direction;
     private Transform player;

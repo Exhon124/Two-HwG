@@ -106,7 +106,9 @@ public class RobotBehavior2 : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null; 
         }
-        Instantiate(laser, transform.position, Quaternion.identity);
+
+        if (playerDetected)
+            Instantiate(laser, transform.position, Quaternion.identity);
         chargingLaser = false;
     }
 

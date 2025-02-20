@@ -7,8 +7,8 @@ public class Observer : MonoBehaviour
     public GameObject robot;
     private RobotBehavior2 robotScript; // Reference to parent RobotBehavior
     private Transform player;
-    private float detectDelay = 0.4f;
-    private float nextDetect = 0.4f;
+    private float detectDelay = 0.1f;
+    private float nextDetect = 0.1f;
     private bool check = false;
 
     private void Start()
@@ -38,6 +38,7 @@ public class Observer : MonoBehaviour
             if (Time.time >= nextDetect)
             {
                 robotScript.playerDetected = true;
+                robotScript.lastKnownLoc = player.position;
             }
             check = true;
         }
@@ -61,7 +62,7 @@ public class Observer : MonoBehaviour
 
     IEnumerator waitForCheck()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
         if (check == false)
         {
             if (robotScript.playerSeen == true)
@@ -70,7 +71,9 @@ public class Observer : MonoBehaviour
             } 
             else if (robotScript.playerDetected == true)
             {
-                robotScript.playerDetected = false;
+                yield return new WaitForSeconds(3);
+                if (check == false)
+                    robotScript.playerDetected = false;
             }
         }
     }
