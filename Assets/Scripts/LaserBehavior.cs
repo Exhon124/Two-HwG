@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LaserBehavior : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class LaserBehavior : MonoBehaviour
     public GameObject gameobject;
     private Vector3 direction;
     private Transform player;
+    public GameObject gameManager;
+    private GameManager gameManagerScript;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +19,7 @@ public class LaserBehavior : MonoBehaviour
         player = GameObject.FindWithTag("Player").transform;
         direction = (player.position - transform.position).normalized;
         transform.rotation = Quaternion.LookRotation(direction);
-        Debug.Log("Made laser");
+        gameManagerScript = gameManager.GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -32,7 +35,6 @@ public class LaserBehavior : MonoBehaviour
         {
 
         }else {
-            Debug.Log("destroy laser");
             Destroy(gameObject);
         }
         

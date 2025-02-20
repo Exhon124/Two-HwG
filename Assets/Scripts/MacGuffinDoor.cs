@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorObserver : MonoBehaviour
+public class MacGuffinDoor : MonoBehaviour
 {
     private Transform player;
     public GameObject uI;
@@ -17,6 +17,8 @@ public class DoorObserver : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player")?.transform;
         uiScript = uI.GetComponent<InteractVisibility>();
+        if (uiScript != null)
+            Debug.Log("found ui");
         gameManagerScript = gameManager.GetComponent<GameManager>();
     }
 
@@ -28,7 +30,7 @@ public class DoorObserver : MonoBehaviour
         {
             if (distanceToPlayer <= 4f)
             {
-                if (gameManagerScript.keyCard == true)
+                if (gameManagerScript.macGuffin == true)
                 {
                     uiScript.visible = false;
                     Destroy(door);
@@ -40,7 +42,7 @@ public class DoorObserver : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.transform == player)
-            if (gameManagerScript.keyCard)
+            if (gameManagerScript.macGuffin)
                 uiScript.visible = true;
     }
     void OnTriggerExit(Collider other)

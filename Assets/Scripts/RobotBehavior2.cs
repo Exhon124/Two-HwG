@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class RobotBehavior2 : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class RobotBehavior2 : MonoBehaviour
     public Vector3 lastKnownLoc;
     private bool chargingLaser = false;
     public int laserChargeTime = 3;
+    public Image endCanvas;
 
     // Start is called before the first frame update
     void Start()
