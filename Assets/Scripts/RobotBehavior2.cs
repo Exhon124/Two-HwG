@@ -19,6 +19,8 @@ public class RobotBehavior2 : MonoBehaviour
     private bool chargingLaser = false;
     public int laserChargeTime = 3;
     public Image endCanvas;
+    public bool glitched = false;
+    public float glitchCooldown = 3f;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +34,12 @@ public class RobotBehavior2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerDetected == false)
+        if (glitched == true)
+        {
+            objectLight.color = Color.green;
+            StartCoroutine(RepairSequence());
+        }
+        else if (playerDetected == false)
         {
             objectLight.color = Color.white;
             if (agent.remainingDistance < agent.stoppingDistance)
@@ -112,6 +119,12 @@ public class RobotBehavior2 : MonoBehaviour
         if (playerDetected)
             Instantiate(laser, transform.position, Quaternion.identity);
         chargingLaser = false;
+    }
+
+    IEnumerator RepairSequence()
+    {
+        yield return new WaitForSeconds(glitchCooldown);
+        glitched = false;
     }
 
 }
