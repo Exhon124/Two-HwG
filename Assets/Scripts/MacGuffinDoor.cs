@@ -6,7 +6,7 @@ public class MacGuffinDoor : MonoBehaviour
 {
     private Transform player;
     public GameObject uI;
-    private InteractVisibility uiScript;
+    private PauseMenuBehavior uiScript;
     public GameObject gameManager;
     private GameManager gameManagerScript;
     public GameObject door;
@@ -16,7 +16,7 @@ public class MacGuffinDoor : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player")?.transform;
-        uiScript = uI.GetComponent<InteractVisibility>();
+        uiScript = uI.GetComponent<PauseMenuBehavior>();
         if (uiScript != null)
             Debug.Log("found ui");
         gameManagerScript = gameManager.GetComponent<GameManager>();
