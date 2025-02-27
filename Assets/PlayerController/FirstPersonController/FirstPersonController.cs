@@ -172,7 +172,6 @@ public class FirstPersonController : MonoBehaviour
 
 private void Jump()
     {
-        Debug.Log("Jumping!");
         rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z); // Reset Y velocity to prevent stacking forces
         rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
         isGrounded = false; // Prevents double jumps
