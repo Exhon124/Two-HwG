@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PauseMenuBehavior : MonoBehaviour
@@ -15,6 +16,8 @@ public class PauseMenuBehavior : MonoBehaviour
     public bool visible = false;
     public GameObject interactUI;
     private bool coverUp = false;
+    private PlayerControls controls;
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,23 +25,25 @@ public class PauseMenuBehavior : MonoBehaviour
         pauseMenuUI.SetActive(false);
         playerScript = GameObject.Find("FirstPersonController").GetComponent<FirstPersonController>();
     }
-
+    private void Awake()
+    {
+        controls = new PlayerControls();
+    }
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (GameIsPaused)
-                Resume();
-            else
-                Pause();
-        }
         if (coverUp)
             interactUI.SetActive(false);
         else 
             interactUI.SetActive(visible);
     }
-
+    public void OnMenu(InputAction.CallbackContext context)
+    {
+        if (GameIsPaused)
+            Resume();
+        else
+            Pause();
+    }
 
     public void Resume()
     {
@@ -70,6 +75,23 @@ public class PauseMenuBehavior : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene (sceneName:"MainMenu");
+    }
+    private void OnEnable()
+    {
+        controls.Enable();
+
+        // Bind input actions
+        controls.Player.Menu.performed += OnMenu;
+        controls.Player.Menu.canceled += OnMenu;
+
+    }
+    private void OnDisable()
+    {
+        controls.Disable();
+
+        // Unbind input actions
+        controls.Player.Menu.performed -= OnMenu;
+        controls.Player.Menu.canceled -= OnMenu;
     }
 
 }
