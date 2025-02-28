@@ -82,7 +82,7 @@ public class PauseMenuBehavior : MonoBehaviour
 
         // Bind input actions
         controls.Player.Menu.performed += OnMenu;
-        controls.Player.Menu.canceled += OnMenu;
+
 
     }
     private void OnDisable()
@@ -91,7 +91,7 @@ public class PauseMenuBehavior : MonoBehaviour
 
         // Unbind input actions
         controls.Player.Menu.performed -= OnMenu;
-        controls.Player.Menu.canceled -= OnMenu;
+
     }
 
 }

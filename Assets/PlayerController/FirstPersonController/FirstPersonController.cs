@@ -159,12 +159,10 @@ public class FirstPersonController : MonoBehaviour
         {
             isGrounded = true;
             Debug.DrawRay(transform.position, direction * checkDistance, Color.green); // Turn green when grounded
-            Debug.Log("Ground detected: " + hit.collider.gameObject.name);
         }
         else
         {
             isGrounded = false;
-            Debug.Log("Not grounded!");
         }
     }
 
@@ -224,7 +222,6 @@ private void Jump()
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        Debug.Log("Grounded: " + isGrounded);
         if (isGrounded)
         {
             Jump();

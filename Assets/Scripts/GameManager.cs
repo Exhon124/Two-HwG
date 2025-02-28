@@ -38,13 +38,14 @@ public class GameManager : MonoBehaviour
 
                 Debug.Log("Throw");
                 hasPipe = false;
-                Vector3 spawnPosition = player.position + player.transform.forward * 4;
+                Vector3 spawnPosition = (player.position + player.transform.forward * 2) + player.transform.up;
 
                 GameObject pipe = Instantiate(pipePrefab, spawnPosition, player.transform.rotation);
 
                 Rigidbody rb = pipe.GetComponent<Rigidbody>();
-                rb.velocity = player.transform.forward * 10;
+                rb.velocity = player.transform.forward * 7;
 
+                rb.angularVelocity = player.transform.right * 10; // Spins around its side axis
         }
 
     }

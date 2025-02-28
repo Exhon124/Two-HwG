@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PipeObserver : MonoBehaviour
 {
@@ -9,12 +10,14 @@ public class PipeObserver : MonoBehaviour
     private RobotBehavior2 robotScript;
     public GameObject gameManager;
     private GameManager gameManagerScript;
+    public bool wakeUp = false;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player")?.transform;
         robotScript = robot.GetComponent<RobotBehavior2>();
         gameManagerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
+        StartCoroutine(DontHitPlayer());
     }
 
     // Update is called once per frame
@@ -27,9 +30,13 @@ public class PipeObserver : MonoBehaviour
     {
         if (other.transform == player)
         {
-            gameManagerScript.hasPipe = true;
-            Debug.Log("Pick up");
-            Destroy(transform.parent.gameObject);
+            if(wakeUp)
+            {
+                gameManagerScript.hasPipe = true;
+                Debug.Log("Pick up");
+                Destroy(transform.parent.gameObject);
+
+            }
 
         }
         if (other == robot)
@@ -37,5 +44,10 @@ public class PipeObserver : MonoBehaviour
             robotScript.glitched = true;
             
         }
+    }
+    IEnumerator DontHitPlayer()
+    {
+        yield return new WaitForSeconds(1);
+        wakeUp = true;
     }
 }
