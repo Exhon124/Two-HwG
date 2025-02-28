@@ -20,7 +20,7 @@ public class RobotBehavior2 : MonoBehaviour
     public int laserChargeTime = 3;
     public Image endCanvas;
     public bool glitched = false;
-    public float glitchCooldown = 3f;
+    public float glitchCooldown = 4f;
 
     // Start is called before the first frame update
     void Start()
