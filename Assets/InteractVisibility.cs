@@ -6,16 +6,10 @@ using UnityEngine;
 public class InteractVisibility : MonoBehaviour
 {
     public bool visible = false;
-    public TextMeshProUGUI text;
-    // Start is called before the first frame update
+    public GameObject interactUI;
 
-    // Update is called once per frame
     void Update()
     {
-        if (visible)
-            text.color = Color.white;
-        else
-            text.color = Color.clear;
-        
+        interactUI.SetActive(visible);
     }
 }
