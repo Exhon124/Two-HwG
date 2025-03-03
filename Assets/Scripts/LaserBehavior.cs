@@ -12,6 +12,9 @@ public class LaserBehavior : MonoBehaviour
     private Transform player;
     public GameObject gameManager;
     private GameManager gameManagerScript;
+    public AudioSource Lazer;
+    public AudioClip imit, touchL;
+
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +23,9 @@ public class LaserBehavior : MonoBehaviour
         direction = (player.position - transform.position).normalized;
         transform.rotation = Quaternion.LookRotation(direction);
         gameManagerScript = gameManager.GetComponent<GameManager>();
+        Lazer.clip = imit;
+        Lazer.Play();
+        
     }
 
     // Update is called once per frame
@@ -33,10 +39,17 @@ public class LaserBehavior : MonoBehaviour
     {
         if (other.CompareTag("EnemyRobot"))
         {
-
-        }else {
-            Destroy(gameObject);
+           
         }
         
+        
+        else {
+            //put soundbite here
+            Lazer.clip = touchL;
+            Lazer.Play();
+            Destroy(gameObject);
+            
+        }
+
     }
 }

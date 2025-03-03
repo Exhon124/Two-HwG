@@ -14,12 +14,17 @@ public class GameManager : MonoBehaviour
     private Transform player;
     public GameObject pipePrefab;
     private PlayerControls controls;
+    public AudioSource enemyRobot;
+    public AudioSource GameDJ;
+    public AudioClip mainTheme, spotted, ExitRun;
 
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player")?.transform;
+        GameDJ.clip = mainTheme;
+        GameDJ.Play();
     }
     private void Awake()
     {
@@ -29,7 +34,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (macGuffin == true && GameDJ.clip != ExitRun)
+        {
+            GameDJ.clip = ExitRun;
+            GameDJ.Play();
+        }
+            
     }
     public void OnThrow(InputAction.CallbackContext context)
     {
@@ -66,4 +76,8 @@ public class GameManager : MonoBehaviour
         controls.Player.Throw.performed -= OnThrow;
         controls.Player.Throw.canceled -= OnThrow;
     }
+
+
+
+
 }
