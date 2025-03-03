@@ -35,7 +35,20 @@ public class LaserBehavior : MonoBehaviour
         transform.position += direction * speed * Time.deltaTime;
 
     }
-    void OnTriggerEnter(Collider other)
+
+    void OnCollisionEnter(Collision collision)
+    {
+        // Check if the object we collided with has the "CollisionTag"
+        if (collision.gameObject.CompareTag("CollisionTag"))
+        {
+            // Play the collision sound
+            Lazer.clip = touchL;
+            Lazer.Play();
+
+            // Destroy the projectile
+            Destroy(gameObject);
+        }
+            void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("EnemyRobot"))
         {
@@ -43,11 +56,7 @@ public class LaserBehavior : MonoBehaviour
         }
         
         
-        else {
-            //put soundbite here
-            Lazer.clip = touchL;
-            Lazer.Play();
-            Destroy(gameObject);
+        
             
         }
 

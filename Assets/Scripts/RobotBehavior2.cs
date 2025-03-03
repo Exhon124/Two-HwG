@@ -23,10 +23,12 @@ public class RobotBehavior2 : MonoBehaviour
     public float glitchCooldown = 4f;
     public AudioSource EnemyRobot;
     public AudioSource GameDJ;
-    public AudioClip PlayerSeen, Charge, PlayerLost;
+    public AudioSource GuardV;
+    public AudioClip PlayerSeen, Charge, PlayerLost, Spotted;
     private bool playerLostAudioPlayed = false; // Track if PlayerLost is currently playing
     private bool wasPlayerDetectedLastFrame = false; // Flag to track last frame state of detection
     private AudioClip originalTheme;
+    private bool playerSeenAudioPlayed = false; // Flag for PlayerSeen audio
 
     // Start is called before the first frame update
     void Start()
@@ -58,27 +60,18 @@ public class RobotBehavior2 : MonoBehaviour
             // Check if the enemy previously detected the player and now lost detection
             if (wasPlayerDetectedLastFrame && !playerDetected)
             {
-                // Debugging: Check if we're trying to play the sound
-                Debug.Log(" Attempting to play PlayerLost sound...");
-                Debug.Log(" Current AudioSource clip: " + (GameDJ.clip != null ? GameDJ.clip.name : "None"));
-                // Play PlayerLost sound because detection is lost
+                
                 if (!playerLostAudioPlayed)
                 {
 
-                    Debug.Log(" Attempting to play PlayerLost sound...");
+                    playerLostAudioPlayed = true;
 
-                    // Check the current clip of the audio source
-                    Debug.Log(" Current AudioSource clip: " + (GameDJ.clip != null ? GameDJ.clip.name : "None"));
-
-                    if (!playerLostAudioPlayed)
+                    if (GameDJ.clip != PlayerLost)
                     {
-                        Debug.Log(" Playing PlayerLost sound...");
-                        playerLostAudioPlayed = true;
-
-                        // Try playing PlayerLost sound
-                        GameDJ.PlayOneShot(PlayerLost); // Use PlayOneShot
-                        StartCoroutine(RestoreMainTheme(PlayerLost.length)); // Start restoring the main theme after the sound ends
+                        GameDJ.clip = PlayerLost;
+                        GameDJ.Play();
                     }
+
                     StartCoroutine(RestoreMainTheme(PlayerLost.length));
 
 
@@ -126,7 +119,20 @@ public class RobotBehavior2 : MonoBehaviour
             {
                 
                 objectLight.color = Color.red;
-                
+
+                if (!playerSeenAudioPlayed && GameDJ != Spotted)
+                {
+                    Debug.Log(" Player seen! Playing PlayerSeen sound...");
+                    GuardV.clip = PlayerSeen; // Set the audio clip to PlayerSeen
+                    GuardV.Play(); // Play the sound
+                    playerSeenAudioPlayed = true; // Prevent the sound from playing again
+
+                    GameDJ.clip = Spotted;
+                    GameDJ.Play();
+
+                    
+                }
+
                 if (chargingLaser == false)
                 {
                     EnemyRobot.clip = Charge;

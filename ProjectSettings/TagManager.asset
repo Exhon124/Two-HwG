@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - EnemyRobot
+  - CollisionTag
   layers:
   - Default
   - TransparentFX
