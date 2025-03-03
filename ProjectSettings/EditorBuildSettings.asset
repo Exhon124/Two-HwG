@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/MainMenu1.unity
     guid: de4f5508b557a6b4cb8044636a610034
   - enabled: 1
     path: Assets/Scenes/Stowaway_Hall.unity
