@@ -52,6 +52,7 @@ public class MacGuffinDoor : MonoBehaviour
             if (gameManagerScript.macGuffin == true)
             {
                 uiScript.visible = false;
+                GameObject.Find("Canvas").GetComponent<PauseMenuBehavior>().WinScreen();
                 Destroy(door);
                 Destroy(gameObject);
             }

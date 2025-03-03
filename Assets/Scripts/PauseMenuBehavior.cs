@@ -18,11 +18,17 @@ public class PauseMenuBehavior : MonoBehaviour
     private bool coverUp = false;
     private PlayerControls controls;
 
+    //WIN/LOSE
+    public GameObject winScreenUI;
+    public GameObject loseScreenUI;
+
 
     // Start is called before the first frame update
     void Start()
     {
         pauseMenuUI.SetActive(false);
+        winScreenUI.SetActive(false);
+        loseScreenUI.SetActive(false);
         playerScript = GameObject.Find("FirstPersonController").GetComponent<FirstPersonController>();
     }
     private void Awake()
@@ -34,8 +40,9 @@ public class PauseMenuBehavior : MonoBehaviour
     {
         if (coverUp)
             interactUI.SetActive(false);
-        else 
+        else
             interactUI.SetActive(visible);
+
     }
     public void OnMenu(InputAction.CallbackContext context)
     {
@@ -76,6 +83,21 @@ public class PauseMenuBehavior : MonoBehaviour
     {
         SceneManager.LoadScene (sceneName:"MainMenu");
     }
+
+    public void WinScreen()
+    {
+        Pause();
+        pauseMenuUI.SetActive (false);
+        winScreenUI.SetActive (true);
+    }
+
+    public void LoseScreen()
+    {
+        Pause();
+        pauseMenuUI.SetActive (false);
+        loseScreenUI.SetActive(true);
+    }
+
     private void OnEnable()
     {
         controls.Enable();
