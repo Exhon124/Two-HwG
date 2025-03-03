@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AudioScript : MonoBehaviour
 {
+<<<<<<< Updated upstream
     // Start is called before the first frame update
     void Start()
     {
@@ -15,4 +16,9 @@ public class AudioScript : MonoBehaviour
     {
         
     }
+=======
+    public AudioSource enemy Robot;
+    public AudioSource GameManager;
+
+>>>>>>> Stashed changes
 }
