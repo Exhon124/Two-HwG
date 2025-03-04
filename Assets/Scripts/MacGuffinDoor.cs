@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.ProBuilder.Shapes;
 
 public class MacGuffinDoor : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class MacGuffinDoor : MonoBehaviour
     private GameManager gameManagerScript;
     public GameObject door;
     private PlayerControls controls;
+    public GameObject doorL;
+    public MacGuffinDoorMovementR doorRBehaviorScript;
+    public GameObject doorR;
+    public MacGuffinDoorMovementL doorLBehaviorScript;
 
 
 
@@ -23,6 +28,8 @@ public class MacGuffinDoor : MonoBehaviour
         if (uiScript != null)
             Debug.Log("found ui");
         gameManagerScript = gameManager.GetComponent<GameManager>();
+        doorRBehaviorScript = doorR.GetComponent<MacGuffinDoorMovementR>();
+        doorLBehaviorScript = doorL.GetComponent<MacGuffinDoorMovementL>();
     }
     private void Awake()
     {
@@ -53,8 +60,8 @@ public class MacGuffinDoor : MonoBehaviour
             {
                 uiScript.visible = false;
                 GameObject.Find("Canvas").GetComponent<PauseMenuBehavior>().WinScreen();
-                Destroy(door);
-                Destroy(gameObject);
+                StartCoroutine(doorRBehaviorScript.MoveDoor());
+                StartCoroutine(doorLBehaviorScript.MoveDoor());
             }
         }
     }

@@ -12,6 +12,7 @@ public class DoorObserver : MonoBehaviour
     public GameObject gameManager;
     private GameManager gameManagerScript;
     public GameObject door;
+    public DoorBehavior doorBehaviorScript;
     private PlayerControls controls;
 
 
@@ -21,6 +22,7 @@ public class DoorObserver : MonoBehaviour
         player = GameObject.FindWithTag("Player")?.transform;
         uiScript = uI.GetComponent<PauseMenuBehavior>();
         gameManagerScript = gameManager.GetComponent<GameManager>();
+        doorBehaviorScript = door.GetComponent<DoorBehavior>();
     }
     private void Awake()
     {
@@ -50,10 +52,10 @@ public class DoorObserver : MonoBehaviour
             if (gameManagerScript.keyCard == true)
             {
                 uiScript.visible = false;
-                Destroy(door);
-                Destroy(gameObject);
+                StartCoroutine(doorBehaviorScript.MoveDoor());
             }
         }
+
     }
     private void OnEnable()
     {
