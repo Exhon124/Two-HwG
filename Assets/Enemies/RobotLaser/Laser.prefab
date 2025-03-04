@@ -123,9 +123,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameobject: {fileID: 7983505274531486466}
   gameManager: {fileID: 5883343225939505373, guid: 7ba2e1a6db972034e900b106177ed726, type: 3}
-  Lazer: {fileID: 45798641730905169}
-  imit: {fileID: 8300000, guid: 4107ea8ac714b3948a1fcf5c05871f26, type: 3}
-  touchL: {fileID: 8300000, guid: 324efcf3350d8d540810dd5473503bc4, type: 3}
 --- !u!82 &45798641730905169
 AudioSource:
   m_ObjectHideFlags: 0
@@ -136,7 +133,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 324efcf3350d8d540810dd5473503bc4, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.381
   m_Pitch: 1

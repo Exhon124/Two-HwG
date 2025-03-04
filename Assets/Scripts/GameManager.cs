@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public AudioSource enemyRobot;
     public AudioSource GameDJ;
     public AudioClip mainTheme, spotted, ExitRun;
+    private bool PlayedExitRun = false; // Flag for PlayerSeen audio
 
 
     // Start is called before the first frame update
@@ -38,6 +39,8 @@ public class GameManager : MonoBehaviour
         {
             GameDJ.clip = ExitRun;
             GameDJ.Play();
+
+            PlayedExitRun = true;
         }
             
     }
