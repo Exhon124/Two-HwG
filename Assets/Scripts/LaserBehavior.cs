@@ -34,9 +34,15 @@ public class LaserBehavior : MonoBehaviour
         if (other.CompareTag("EnemyRobot"))
         {
 
-        }else {
+        }else if (other.CompareTag("EnemyComponent")){
+
+        }else
+        {
             Destroy(gameObject);
         }
-        
+
+
+
+
     }
 }

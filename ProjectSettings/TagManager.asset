@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - EnemyRobot
+  - EnemyComponent
   layers:
   - Default
   - TransparentFX

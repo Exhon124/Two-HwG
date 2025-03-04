@@ -22862,6 +22862,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2561131142889583422, guid: 6fe89d92d7eed7e4bb2a27aeda6a517d, type: 3}
+      propertyPath: m_TagString
+      value: EnemyComponent
+      objectReference: {fileID: 0}
+    - target: {fileID: 2920112080739176284, guid: 6fe89d92d7eed7e4bb2a27aeda6a517d, type: 3}
+      propertyPath: m_TagString
+      value: EnemyComponent
+      objectReference: {fileID: 0}
     - target: {fileID: 3231464656312030485, guid: 6fe89d92d7eed7e4bb2a27aeda6a517d, type: 3}
       propertyPath: waypoints.Array.data[0]
       value: 
@@ -22906,6 +22914,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyRobot
       objectReference: {fileID: 0}
+    - target: {fileID: 3482586385687275397, guid: 6fe89d92d7eed7e4bb2a27aeda6a517d, type: 3}
+      propertyPath: m_TagString
+      value: EnemyComponent
+      objectReference: {fileID: 0}
     - target: {fileID: 6245615628539016466, guid: 6fe89d92d7eed7e4bb2a27aeda6a517d, type: 3}
       propertyPath: m_Radius
       value: 0.361952
@@ -22921,6 +22933,10 @@ PrefabInstance:
     - target: {fileID: 6245615628539016466, guid: 6fe89d92d7eed7e4bb2a27aeda6a517d, type: 3}
       propertyPath: m_Center.z
       value: 1.0700042
+      objectReference: {fileID: 0}
+    - target: {fileID: 9199189246964778859, guid: 6fe89d92d7eed7e4bb2a27aeda6a517d, type: 3}
+      propertyPath: m_TagString
+      value: EnemyComponent
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3807340034116341538, guid: 6fe89d92d7eed7e4bb2a27aeda6a517d, type: 3}
