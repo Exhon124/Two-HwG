@@ -31,12 +31,29 @@ public class LaserBehavior : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("EnemyRobot"))
+        Debug.Log(other);
+        if (other.CompareTag("EnemyRobot"))
+        {
+
+        }
+        else if(other.CompareTag("EnemyComponent"))
+        {
+
+        }else if (other.CompareTag("Player"))
         {
             GameObject.Find("Canvas").GetComponent<PauseMenuBehavior>().LoseScreen();
             Destroy(gameObject);
-            
         }
-        
+        else
+        {
+            Destroy(gameObject);
+        }
+
+
+
+
+
+
+
     }
 }

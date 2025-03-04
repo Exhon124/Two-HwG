@@ -55,6 +55,7 @@ public class PauseMenuBehavior : MonoBehaviour
     public void Resume()
     {
         playerScript.lockCursor = true;
+        playerScript.playerCanMove = true;
         Cursor.lockState = CursorLockMode.Locked;
         playerScript.cameraCanMove = true;
         pauseMenuUI.SetActive(false);
@@ -66,6 +67,7 @@ public class PauseMenuBehavior : MonoBehaviour
     void Pause()
     {
         playerScript.lockCursor = false;
+        playerScript.playerCanMove = false;
         Cursor.lockState = CursorLockMode.None;
         playerScript.cameraCanMove = false;
         pauseMenuUI.SetActive(true);

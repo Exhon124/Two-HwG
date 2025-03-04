@@ -77,7 +77,6 @@ public class FirstPersonController : MonoBehaviour
     public AudioClip moving, still, jump;
     // Internal Variables
     private float timer = 0;
-
     
 
     private void Awake()
@@ -158,10 +157,13 @@ public class FirstPersonController : MonoBehaviour
 
         if (Physics.Raycast(transform.position, direction, out RaycastHit hit, checkDistance))
         {
-            isGrounded = true;
-            Debug.DrawRay(transform.position, direction * checkDistance, Color.green); // Turn green when grounded
+            if (!hit.collider.CompareTag("EnemyComponent"))
+            {
+                isGrounded = true; // Ignore enemy, do not count as ground
+                Debug.Log("Raycast hit an enemy. Not setting ground to true.");
+            }
         }
-        else
+        else 
         {
             isGrounded = false;
         }
@@ -226,12 +228,13 @@ private void Jump()
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (isGrounded)
-        {
-            Jump();
-            PlayerSound.clip = jump;
-            PlayerSound.Play();// jump sound
-        }
+        if (playerCanMove)
+            if (isGrounded)
+            {
+                Jump();
+                PlayerSound.clip = jump;
+                PlayerSound.Play();// jump sound
+            }
     }
 
 
@@ -250,7 +253,6 @@ private void Jump()
         controls.Player.Crouch.canceled += OnCrouch;
 
         controls.Player.Jump.performed += OnJump;
-        controls.Player.Jump.canceled += OnJump;
     }
 
     private void OnDisable()
@@ -268,7 +270,6 @@ private void Jump()
         controls.Player.Crouch.canceled -= OnCrouch;
 
         controls.Player.Jump.performed -= OnJump;
-        controls.Player.Jump.canceled -= OnJump;
     }
 }
 
