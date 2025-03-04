@@ -73,7 +73,8 @@ public class FirstPersonController : MonoBehaviour
     #endregion
     #endregion
 
-
+    public AudioSource PlayerSound;
+    public AudioClip moving, still, jump;
     // Internal Variables
     private float timer = 0;
 
@@ -200,6 +201,9 @@ private void Jump()
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+        //place sound
+        PlayerSound.clip = moving;
+        PlayerSound.Play();
     }
     public void OnLook(InputAction.CallbackContext context)
     {
@@ -225,6 +229,8 @@ private void Jump()
         if (isGrounded)
         {
             Jump();
+            PlayerSound.clip = jump;
+            PlayerSound.Play();// jump sound
         }
     }
 

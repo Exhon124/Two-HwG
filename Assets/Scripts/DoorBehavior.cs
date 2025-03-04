@@ -10,12 +10,16 @@ public class DoorBehavior : MonoBehaviour
     private GameManager gameManagerScript;
     private Vector3 targetPosition;
     public GameObject thisDoor;
+    private Animator doorAnimator; // Reference to the Animator
     // Start is called before the first frame update
     void Start()
     {
+
         gameManagerScript = gameManager.GetComponent<GameManager>();
         player = GameObject.FindWithTag("Player")?.transform;
     }
+
+
 
     // Update is called once per frame
     void Update()
@@ -23,3 +27,4 @@ public class DoorBehavior : MonoBehaviour
 
     }
 }
+
