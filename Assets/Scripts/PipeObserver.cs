@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class PipeObserver : MonoBehaviour
 {
     private Transform player;
-    public GameObject robot;
+    public Transform robot;
     private RobotBehavior2 robotScript;
     public GameObject gameManager;
     private GameManager gameManagerScript;
@@ -15,6 +15,7 @@ public class PipeObserver : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player")?.transform;
+        robot = GameObject.FindWithTag("EnemyRobot")?.transform;
         robotScript = robot.GetComponent<RobotBehavior2>();
         gameManagerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
         StartCoroutine(DontHitPlayer());
@@ -28,6 +29,7 @@ public class PipeObserver : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Pick up: " + other);
         if (other.transform == player)
         {
             if(wakeUp)
@@ -35,14 +37,12 @@ public class PipeObserver : MonoBehaviour
                 gameManagerScript.hasPipe = true;
                 Debug.Log("Pick up");
                 Destroy(transform.parent.gameObject);
-
             }
-
         }
-        if (other == robot)
+        if (other.transform == robot)
         {
             robotScript.glitched = true;
-            
+            Debug.Log("Hit");
         }
     }
     IEnumerator DontHitPlayer()

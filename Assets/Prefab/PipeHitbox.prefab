@@ -68,5 +68,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebfc59c417644f6468511b1d77ac3bf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  robot: {fileID: 0}
-  gameManager: {fileID: 0}
+  robot: {fileID: 3304364012910267248, guid: 6fe89d92d7eed7e4bb2a27aeda6a517d, type: 3}
+  gameManager: {fileID: 5883343225939505373, guid: 7ba2e1a6db972034e900b106177ed726, type: 3}
+  wakeUp: 0

@@ -38,6 +38,7 @@ public class RobotBehavior2 : MonoBehaviour
         {
             objectLight.color = Color.green;
             StartCoroutine(RepairSequence());
+            agent.ResetPath();
         }
         else if (playerDetected == false)
         {

@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PipeHitbox
       objectReference: {fileID: 0}
+    - target: {fileID: 1084941002419782040, guid: f3ac473c690f7544a9a9990a7fb31430, type: 3}
+      propertyPath: robot
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7984590380316023628, guid: f3ac473c690f7544a9a9990a7fb31430, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.44074565
@@ -91,9 +95,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 969527253818291863, guid: f3ac473c690f7544a9a9990a7fb31430, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4983764138016632244}
-    - targetCorrespondingSourceObject: {fileID: 969527253818291863, guid: f3ac473c690f7544a9a9990a7fb31430, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 35205359344925950}
   m_SourcePrefab: {fileID: 100100000, guid: f3ac473c690f7544a9a9990a7fb31430, type: 3}
 --- !u!1 &2312971511175415244 stripped
 GameObject:
@@ -123,20 +124,6 @@ CapsuleCollider:
   m_Height: 0.41037306
   m_Direction: 1
   m_Center: {x: 0.0027957559, y: -0.927194, z: 0.08949696}
---- !u!114 &35205359344925950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2312971511175415244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebfc59c417644f6468511b1d77ac3bf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  robot: {fileID: 919132149155446097, guid: 4ea7348234424fe48a35d172ab032daa, type: 3}
-  gameManager: {fileID: 4459864850019384750, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
 --- !u!4 &4873974614800164887 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7984590380316023628, guid: f3ac473c690f7544a9a9990a7fb31430, type: 3}
