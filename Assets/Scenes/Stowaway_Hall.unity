@@ -122,6 +122,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &5017212 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8414382246739338234, guid: 79c8795beb213b04aadeb348a6958130, type: 3}
+  m_PrefabInstance: {fileID: 1154207937}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &11181419
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -479,6 +484,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 737409913}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!1 &32095382 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8414382246739338234, guid: 79c8795beb213b04aadeb348a6958130, type: 3}
+  m_PrefabInstance: {fileID: 1596497974}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &32303895 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4690191138130150442, guid: 79c8795beb213b04aadeb348a6958130, type: 3}
@@ -527,6 +537,11 @@ Transform:
   - {fileID: 804774576}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &48115804 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8414382246739338234, guid: 79c8795beb213b04aadeb348a6958130, type: 3}
+  m_PrefabInstance: {fileID: 1418172890}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &64421588 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e73a908ebb24b2043a9eab1fe2be644a, type: 3}
@@ -2390,9 +2405,9 @@ MonoBehaviour:
   uI: {fileID: 1627841070}
   gameManager: {fileID: 1492346238}
   door: {fileID: 1508772147}
-  doorL: {fileID: 0}
+  doorL: {fileID: 658086301}
   doorRBehaviorScript: {fileID: 0}
-  doorR: {fileID: 0}
+  doorR: {fileID: 166031835}
   doorLBehaviorScript: {fileID: 0}
 --- !u!1 &320979366 stripped
 GameObject:
@@ -15737,6 +15752,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1238408423}
   - component: {fileID: 1238408424}
+  - component: {fileID: 1238408425}
   m_Layer: 5
   m_Name: Vertical button group
   m_TagString: Untagged
@@ -15792,6 +15808,19 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1238408425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238408422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 988bb71a48ca51f47ab6b34ee4b2e8c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstSelectedButton: {fileID: 32095382}
 --- !u!1001 &1238611013
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15856,6 +15885,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3549375219744441780, guid: a8a995854bd2f23429ba3f4f212c7841, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 102172346}
     - target: {fileID: 3549375219744441780, guid: a8a995854bd2f23429ba3f4f212c7841, type: 3}
       propertyPath: thisDoor
       value: 
@@ -19846,6 +19879,7 @@ GameObject:
   - component: {fileID: 1652949510}
   - component: {fileID: 1652949512}
   - component: {fileID: 1652949511}
+  - component: {fileID: 1652949513}
   m_Layer: 5
   m_Name: LoseScreen
   m_TagString: Untagged
@@ -19913,6 +19947,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652949509}
   m_CullTransparentMesh: 1
+--- !u!114 &1652949513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652949509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 988bb71a48ca51f47ab6b34ee4b2e8c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstSelectedButton: {fileID: 5017212}
 --- !u!1001 &1654738589
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20912,6 +20959,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3549375219744441780, guid: a8a995854bd2f23429ba3f4f212c7841, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 102172346}
+    - target: {fileID: 3549375219744441780, guid: a8a995854bd2f23429ba3f4f212c7841, type: 3}
       propertyPath: thisDoor
       value: 
       objectReference: {fileID: 142301534}
@@ -21252,6 +21303,7 @@ GameObject:
   - component: {fileID: 1846444856}
   - component: {fileID: 1846444858}
   - component: {fileID: 1846444857}
+  - component: {fileID: 1846444859}
   m_Layer: 5
   m_Name: WinScreen
   m_TagString: Untagged
@@ -21319,6 +21371,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1846444855}
   m_CullTransparentMesh: 1
+--- !u!114 &1846444859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846444855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 988bb71a48ca51f47ab6b34ee4b2e8c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstSelectedButton: {fileID: 48115804}
 --- !u!1 &1854598247
 GameObject:
   m_ObjectHideFlags: 0
@@ -23385,6 +23450,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3549375219744441780, guid: a8a995854bd2f23429ba3f4f212c7841, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 102172346}
     - target: {fileID: 3549375219744441780, guid: a8a995854bd2f23429ba3f4f212c7841, type: 3}
       propertyPath: thisDoor
       value: 

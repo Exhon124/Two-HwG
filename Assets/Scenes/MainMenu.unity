@@ -1240,6 +1240,10 @@ MonoBehaviour:
   uI: {fileID: 0}
   gameManager: {fileID: 0}
   door: {fileID: 1508772147}
+  doorL: {fileID: 0}
+  doorRBehaviorScript: {fileID: 0}
+  doorR: {fileID: 0}
+  doorLBehaviorScript: {fileID: 0}
 --- !u!1 &320979366 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e73a908ebb24b2043a9eab1fe2be644a, type: 3}
@@ -3505,6 +3509,11 @@ MeshCollider:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4690191138130150442, guid: 79c8795beb213b04aadeb348a6958130, type: 3}
   m_PrefabInstance: {fileID: 110499612}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &393355351 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8414382246739338234, guid: 79c8795beb213b04aadeb348a6958130, type: 3}
+  m_PrefabInstance: {fileID: 1116071647}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &411109144
 PrefabInstance:
@@ -10513,6 +10522,7 @@ GameObject:
   - component: {fileID: 1626799105}
   - component: {fileID: 1626799104}
   - component: {fileID: 1626799103}
+  - component: {fileID: 1626799106}
   m_Layer: 5
   m_Name: Vertical Button Group
   m_TagString: Untagged
@@ -10606,6 +10616,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1626799101}
   m_CullTransparentMesh: 1
+--- !u!114 &1626799106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626799101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 988bb71a48ca51f47ab6b34ee4b2e8c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstSelectedButton: {fileID: 393355351}
 --- !u!1001 &1680370513
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10827,7 +10850,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699673146}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12731,8 +12754,8 @@ SceneRoots:
   - {fileID: 461861148}
   - {fileID: 1817434495}
   - {fileID: 1033913214}
-  - {fileID: 430101925}
   - {fileID: 1699673150}
+  - {fileID: 430101925}
   - {fileID: 1406543790}
   - {fileID: 1553190160}
   - {fileID: 868944686}
