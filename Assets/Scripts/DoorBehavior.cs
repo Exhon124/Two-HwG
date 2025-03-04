@@ -25,7 +25,7 @@ public class DoorBehavior : MonoBehaviour
     }
     public IEnumerator MoveDoor()
     {
-        for (int i = 0; i < 200; i++)
+        for (int i = 0; i < 600; i++)
         {
             transform.position = Vector3.MoveTowards(transform.position, transform.position + transform.up, 0.5f * Time.deltaTime);
             yield return new WaitForEndOfFrame();
