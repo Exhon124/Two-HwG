@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
 
     public void quitGame()
     {
-        quitGame();
+        Application.Quit();
     }
 
     public void loadArtScene()

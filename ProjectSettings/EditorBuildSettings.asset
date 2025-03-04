@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/MainMenu1.unity
+    guid: de4f5508b557a6b4cb8044636a610034
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
-    guid: de4f5508b557a6b4cb8044636a610034
+    guid: 2eaa744a4c9057845ae8f3585ff92ec0
   - enabled: 1
     path: Assets/Scenes/Stowaway_Hall.unity
     guid: 58adf1ffdb75f5b468831e90611ca119
